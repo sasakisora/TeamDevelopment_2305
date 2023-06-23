@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="common/head :: head_fragment(title = 'ユーザー情報編集', scripts = ~{::script}, links = ~{::link})"><head>
 	<meta charset="UTF-8">
 	<title>User Information</title>
 	<link rel="stylesheet" href="user.css">
 </head>
 <body>
 	<h1>ユーザー情報編集</h1>
-	<div class="form-container">
-		<form>
+	<div class="container">
+		<form th:action="@{/user/update}" th:object="${userUpdateRequest}" th:method="post">
 			<div class="form-group">
 				<label for="username">ユーザーネーム</label>
 				<input type="text" id="username" name="username" value="John Doe">

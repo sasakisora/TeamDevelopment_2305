@@ -17,7 +17,10 @@
 				for="inputPassword">パスワード</label> <input type="password"
 				id="password" class="form-control" placeholder="Password"
 				name="password" />
-
+<!--/* ログインエラー時にメッセージを表示 */-->
+                <div th:if="${param.error}" class="alert alert-danger">
+                    メールアドレスまたはパスワードが正しくありません
+                 </div>
 			<div class="signup">
 				<span>アカウントをお持ちですか？</span> <a href="#">新規登録</a>
 			</div>

@@ -24,11 +24,11 @@ public class LoginUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		// メールアドレスによりユーザーを検索
 		LoginUserEntity userEntity = loginUserRepository.findByEmail(email);
-		
+
 		if (userEntity == null) {
 			throw new UsernameNotFoundException("そのEmailは登録されていません");
 		}
-		
+
 		// 権限情報を格納するためのリストの作成、権限の付与
 		Collection<GrantedAuthority> authorityList = new ArrayList<>();
 		authorityList.add(new SimpleGrantedAuthority("ROLE_USER"));
@@ -36,7 +36,6 @@ public class LoginUserService implements UserDetailsService {
 		return new org.springframework.security.core.userdetails.User(
 				userEntity.getEmail(),
 				userEntity.getPassword(),
-				authorityList
-		);
+				authorityList);
 	}
 }

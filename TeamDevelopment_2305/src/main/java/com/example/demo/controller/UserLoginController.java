@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserLoginController {
+	
 
 	//ログイン画面への遷移
 	@GetMapping
@@ -19,5 +20,5 @@ public class UserLoginController {
 		return "hello";
 	}
 
-	
-}
+	 
+	} 
