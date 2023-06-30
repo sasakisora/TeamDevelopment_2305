@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>投稿</title>
+  <link rel="stylesheet" type="text/css" href="/css/tweet.css">
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <button class="back-button" onclick="window.history.back()">戻る</button>
+      つぶやこう！
+    </h1>
+
+    <form action="/posts" method="post" onsubmit="submitForm(event)">
+      <div class="tweet-box">
+        <textarea name="content" placeholder="いまどうしてる？"></textarea>
+      </div>
+
+      <!-- userIdを入力するフィールド -->
+      <input type="hidden" name="userId" value="1"> <!-- ユーザーIDを適切な値に変更 -->
+
+      <button class="tweet-button" type="submit">ツイート</button>
+    </form>
+  </div>
+
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); // フォームのデフォルトの送信動作をキャンセル
+      const form = event.target;
+      const url = form.getAttribute('action');
+      const formData = new FormData(form);
+
+      // フォームを非同期で送信
+      fetch(url, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          const content = encodeURIComponent(formData.get('content'));
+          const redirectUrl = `http://localhost:8080/user/list?keyword=${content}`;
+          window.location.href = redirectUrl;
+        } else {
+          throw new Error('ツイートの投稿に失敗しました。');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+  </script>
+</body>
+</html>

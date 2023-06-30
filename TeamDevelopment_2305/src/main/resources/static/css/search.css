@@ -64,12 +64,25 @@ body {
     flex-grow: 1;
   }
   
-  .like-button {
-    padding: 5px 10px;
-    font-size: 12px;
-    background-color: #fff;
-    color: #000;
-    border: none;
-    cursor: pointer;
-  }
-  
+    /* .like-button { */
+      /* padding: 5px 10px; */
+      /* font-size: 12px; */
+      /* background-color: #fff; */
+      /* color: #ccc; */
+      /* border: none; */
+      /* cursor: pointer; */
+    /* } */
+    .liked-heart {
+      color: pink;}
+
+      .like-button {
+        padding: 5px;
+        font-size: 18px;
+        background-color: transparent;
+        color: #ccc;
+        border: none;
+        cursor: pointer;
+      }
+      .like-button.liked i { 
+        color: pink; 
+      } 
