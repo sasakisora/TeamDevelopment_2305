@@ -211,14 +211,4 @@ public class UserController {
 		return "/user/delete";
 	}
 	//}
-	
-	//テスト
-	@GetMapping("/user/ligin_test")
-	public String displylogin_test() {
-		return "/user/login_test";
-		
-		
-	}
-	
-
 }

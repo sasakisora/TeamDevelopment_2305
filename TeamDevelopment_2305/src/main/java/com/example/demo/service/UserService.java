@@ -25,8 +25,7 @@ import com.example.demo.repository.UserRepository;
 @Transactional(rollbackFor = Exception.class)
 public class UserService {
 	/**
-	 * Repository
-	 * 　引き継いだEnTityデータ型を操作する
+	 * ユーザー情報 Repository
 	 */
 	@Autowired
 	private UserRepository userRepository;
@@ -50,12 +49,10 @@ public class UserService {
 		return userRepository.getOne(id);
 	}
 	
-	//ID検索
 	public UserEntity findByUser_Id(Integer id) {
 		return userRepository.findById(id).get();
 	}
 	
-	//UserID検索
 	public UserEntity getUser_Id(Integer user_id) {
 		return userRepository.findById(user_id).get();
 	}
