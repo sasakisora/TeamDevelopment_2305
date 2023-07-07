@@ -11,7 +11,8 @@
 
     <div class="search-box">
       <!-- マイページへのリンク -->
-      <a th:href="@{/user/mypage}" class="editing-button">マイページ</a>
+      <a th:href="@{/user/{id}(id=1)}" class="editing-button">マイページ</a>
+      <a th:href="@{/user/add_user}" class="editing-button">ユーザ登録</a>
     </div>
 
     <div class="search-box">  
@@ -48,7 +49,7 @@
             <!-- 操作用の列 -->
             <td>
               <!-- 返信ボタン -->
-              <a th:href="@{/user/reply(id=${post.id})}" class="btn btn-secondary">返信</a>
+              <a th:href="@{/user/reply/id(id=${post.id})}" class="btn btn-secondary">返信</a>
               <!-- ハートボタン -->
               <button class="like-button"><i class="fas fa-heart"></i></button>
             </td>

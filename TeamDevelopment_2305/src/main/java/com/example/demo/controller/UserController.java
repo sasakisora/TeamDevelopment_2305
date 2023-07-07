@@ -57,7 +57,7 @@ public class UserController {
 		List<UserEntity> userlist = userService.searchAll();
 		model.addAttribute("userlist", userlist);
 		//		model.addAttribute("userlist", userlist);
-		return "user/list";
+		return "user/mypage";
 	}
 
 	/**
@@ -96,12 +96,12 @@ public class UserController {
 
 
 	//返信画面
-	@RequestMapping("/user/reply")
+	@RequestMapping("/user/reply/{id}")
 	public String displayReply(@Validated @ModelAttribute("re_content") Re_CommentsRequest re_commentsRequest, 
 			BindingResult result,
-			Model model,Model comentModel) {
+			Model model,Model comentModel,Integer id) {
 
-		UserEntity editEntity = userService.findById(3); //返信するものを取得
+		UserEntity editEntity = userService.findById(id); //返信するものを取得
 		UserRequest editForm = new UserRequest();
 		editForm.setId(editEntity.getId()); //IDを取得
 		editForm.setContent(editEntity.getContent()); //コンテンツを取得
