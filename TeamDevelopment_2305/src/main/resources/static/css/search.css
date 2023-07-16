@@ -1,0 +1,88 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    width: 600px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #be0a14ff;
+    color: #fff;
+    border: 2px solid #be0a14ff;
+    margin-left: 10px;
+  }
+  
+  .cancel-button,
+  .deleted-button,
+  .editing-button {
+    padding: 10px 20px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #be0a14ff;
+    margin-left: 10px;
+  }
+  
+  .search-results {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border: 2px solid #be0a14ff;
+  }
+  
+  .search-result {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-result p {
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+    /* .like-button { */
+      /* padding: 5px 10px; */
+      /* font-size: 12px; */
+      /* background-color: #fff; */
+      /* color: #ccc; */
+      /* border: none; */
+      /* cursor: pointer; */
+    /* } */
+    .liked-heart {
+      color: pink;}
+
+      .like-button {
+        padding: 5px;
+        font-size: 18px;
+        background-color: transparent;
+        color: #ccc;
+        border: none;
+        cursor: pointer;
+      }
+      .like-button.liked i { 
+        color: pink; 
+      } 

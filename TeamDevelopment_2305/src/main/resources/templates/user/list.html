@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter検索</title> 
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container">  
+    <h1>キーワード検索</h1>
+
+    <div class="search-box">
+      <!-- マイページへのリンク -->
+      <a th:href="@{/user/{id}(id=1)}" class="editing-button">マイページ</a>
+      <a th:href="@{/user/add_user}" class="editing-button">ユーザ登録</a>
+    </div>
+
+    <div class="search-box">  
+      <!-- 検索フォーム -->
+      <form th:action="@{/user/list}" method="get"> 
+        <input type="text" class="search-input" placeholder="検索キーワードを入力して" name="keyword">
+        <button type="submit" class="search-button">検索</button>
+      </form>
+    </div>
+
+    <div id="user-list">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th> <!-- 投稿のIDを表示する列 -->
+            <th>Content</th> <!-- 投稿の内容を表示する列 -->
+            <th>Created At</th> <!-- 投稿の作成日時を表示する列 -->
+            <th>Updated At</th> <!-- 投稿の更新日時を表示する列 -->
+            <th>Actions</th> <!-- 操作用の列 -->
+          </tr>
+        </thead>
+      
+        <tbody>
+          <!-- 投稿の数だけ反復処理 -->
+          <tr th:each="post : ${userlist}" th:object="${post}" class="align-middle">
+            <!-- 投稿のIDを表示 -->
+            <td th:text="${post.id}"></td>
+            <!-- 投稿の内容を表示 -->
+            <td th:text="${post.content}"></td>
+            <!-- 投稿の作成日時を表示 -->
+            <td th:text="${#dates.format(post.createDate, 'yyyy/MM/dd')}"></td>
+            <!-- 投稿の更新日時を表示 -->
+            <td th:text="${#dates.format(post.updated_at, 'yyyy/MM/dd')}"></td>        
+            <!-- 操作用の列 -->
+            <td>
+              <!-- 返信ボタン -->
+              <a th:href="@{/user/reply/id(id=${post.id})}" class="btn btn-secondary">返信</a>
+              <!-- ハートボタン -->
+              <button class="like-button"><i class="fas fa-heart"></i></button>
+            </td>
+          </tr>
+
+          <!-- 検索結果がない場合の表示 -->
+          <tr id="no-results-row" th:if="${userlist.empty}">
+            <td colspan="5">該当する結果はありません</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // 初期データの表示
+    function displayData(data) {
+      const userList = document.getElementById("user-list");
+      const noResultsRow = document.getElementById("no-results-row");
+
+      // 検索結果をクリア
+      userList.innerHTML = "";
+
+      // 検索結果がある場合は表示
+  if (data.length > 0) {
+  data.forEach(result => {
+    // 新しい行要素を作成
+    const row = document.createElement("tr");
+    row.classList.add("align-middle"); // 行に "align-middle" クラスを追加
+
+    // ID列のセルを作成し、結果のIDをセット
+    const idCell = document.createElement("td");
+    idCell.textContent = result.id;
+
+    // Content列のセルを作成し、結果の内容をセット
+    const contentCell = document.createElement("td");
+    contentCell.textContent = result.content;
+
+    // Created At列のセルを作成し、結果の作成日時をセット
+    const createdAtCell = document.createElement("td");
+    createdAtCell.textContent = result.created_at;
+
+    // Updated At列のセルを作成し、結果の更新日時をセット
+    const updatedAtCell = document.createElement("td");
+    updatedAtCell.textContent = result.updated_at;
+
+    // アクション列のセルを作成
+    const actionsCell = document.createElement("td");
+
+    // 返信リンクを作成
+    const detailLink = document.createElement("a");
+    detailLink.href = "/posts/" + result.id; // リンク先URLを設定
+    detailLink.className = "btn btn-secondary"; // クラスを追加
+    detailLink.textContent = "返信"; // リンクテキストを設定
+    actionsCell.appendChild(detailLink); // アクション列に返信リンクを追加
+
+    // いいねボタンを作成
+    const likeButton = document.createElement("button");
+    likeButton.className = "like-button"; // クラスを追加
+    const heartIcon = document.createElement("i");
+    heartIcon.className = "fas fa-heart"; // ハートアイコンのクラスを設定
+    likeButton.appendChild(heartIcon); // いいねボタンにハートアイコンを追加
+    actionsCell.appendChild(likeButton); // アクション列にいいねボタンを追加
+
+    // セルを行に追加
+    row.appendChild(idCell);
+    row.appendChild(contentCell);
+    row.appendChild(createdAtCell);
+    row.appendChild(updatedAtCell);
+    row.appendChild(actionsCell);
+
+    // 行をユーザーリストに追加
+    userList.appendChild(row);
+  });
+
+
+        // 検索結果がある場合は「該当する結果はありません」メッセージを非表示にする
+        noResultsRow.style.display = "none";
+      } else {
+        // 検索結果がない場合は「該当する結果はありません」メッセージを表示する
+        noResultsRow.style.display = "none";
+      }
+    }
+
+    // 検索ボタンがクリックされた時の処理
+    const searchButton = document.querySelector(".search-button");
+    searchButton.addEventListener("click", function() {
+      // 検索キーワードを取得
+      const keyword = document.querySelector(".search-input").value;
+
+      // Ajaxリクエストでデータベースから検索結果を取得
+      $.ajax({
+		  url: "/list", // リクエストの送信先URL
+		  type: "GET", // リクエストのHTTPメソッド
+		  data: { keyword: keyword }, // リクエストパラメータとして検索キーワードを送信
+		  success: function(response) {
+			  const results = response.results; // レスポンスから検索結果データを取得
+			  displayData(results); // 取得した検索結果を表示する関数に渡す
+			  },
+			  error: function() {
+				  console.log("検索エラー"); // エラー時にコンソールにエラーメッセージを出力
+				  }});    
+				  });
+    // いいねボタンがクリックされた時の処理
+    const likeButtons = document.querySelectorAll(".like-button");
+    likeButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        // ハートの色を切り替える
+        this.classList.toggle("liked");
+      });
+    });
+  </script> 
+</body>
+</html>

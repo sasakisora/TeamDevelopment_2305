@@ -1,0 +1,253 @@
+h1 {
+	text-align: center;
+}
+
+.form-div {
+	background-color: blue;
+	height: auto;
+	width: auto;
+	text-align: center;
+	align-items: center;
+}
+
+
+
+
+/*ユーザー登録画面↓*/
+.box_con {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+	.box_con {
+		width: 95%;
+	}
+}
+
+.box_con form {
+	width: 100%;
+}
+
+.box_con form table {
+	width: 100%;
+}
+
+.box_con form table tr {
+	position: relative;
+}
+
+.formTable input{
+	border: 1px solid #be0a14;
+}
+
+.box_con form table tr:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	height: 1px;
+	border-bottom: dotted #cdcdcd 1px;
+}
+
+.box_con form table tr th {
+	width: 30%;
+	font-weight: normal;
+	padding: 1em .5em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+	.box_con form table tr th {
+		text-align: center;
+		width: 100%;
+		display: block;
+/*		background: #97ae88;*/
+		padding: .8em .2em;
+		color: #fff;
+	}
+}
+
+.box_con form table tr td {
+	padding: 1em .5em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+	.box_con form table tr td {
+		padding: 1.5em .5em;
+		display: block;
+		width: 100%;
+	}
+}
+
+.box_con form table tr select,
+.box_con form table tr input,
+.box_con form table tr textarea {
+	width: 100%;
+	height: 3em;
+	padding: .5em;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+}
+
+.add_cancel_btn {
+	margin-right: 60px;
+	border: 1px solid #be0a14;
+	background: white;
+	color: #be0a14;
+}
+
+.btn_cancel{
+	background: white;
+	border: none;
+	border: 1px solid #be0a14;
+	color: #be0a14;
+}
+
+
+
+.add_regi_btn, .btn_red {
+	background: #be0a14;
+	color: white;
+	border: none;
+}
+
+.btn input {
+	display: inline-block;
+	padding: .5em 4em;
+	text-decoration: none;
+	cursor: pointer;
+	-moz-transition: all 0.4s;
+	-o-transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+
+
+.btn input:hover {
+	opacity: 0.7;
+}
+
+
+
+
+
+
+
+
+/*編集と削除画面↓*/
+.edit_form {
+	text-align: center;
+}
+
+.delete_div_p {
+	background-color: chocolate;
+	width: 40%;
+	height: auto;
+}
+
+.edit_textarea {
+	resize: none;
+	box-sizing: border-box;
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 25%;
+}
+
+.edit_editerea {
+	display: inline-block;
+	border: 1px solid #be0a14;
+	width: 40%;
+}
+
+.edit_editerea.del_editerea {
+	border: none;
+}
+
+/*▼▼▼▼▼▼▼返信▼▼▼▼▼▼▼▼↓*/
+.edit_editerea.reply_editerea{
+	border: 2px dotted #be0a14;
+	margin-bottom: 30px;;
+}
+/*▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲*/
+
+.del_textarea {
+	resize: none;
+	box-sizing: border-box;
+	outline: none;
+	width: 100%;
+	height: 25%;
+	border: 1px solid #be0a14;
+}
+
+
+
+.div_btn_img {
+	width: auto;
+	height: auto;
+	text-align: right;
+	margin-right: 3px;
+}
+
+.btn_img {
+	text-align: right;
+	height: 32px;
+	width: 32px;
+}
+
+.btn_between {
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
+}
+
+
+
+
+/*削除確認画面↓*/
+.del_check {
+	color: darkred;
+	text-align: left;
+}
+
+
+
+
+/*MY一覧画面↓*/
+.table_wideCell{
+	width: 90%;
+	border: 1px solid #be0a14;
+	background: deeppink;
+}
+
+.table{
+	margin-top: 30px;
+}
+
+#list_table{
+	background-color:#ffffff;
+}
+
+
+
+
+
+
+
+
+
+

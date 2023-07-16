@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/head :: head_fragment(title = '編集', scripts = ~{::script}, links = ~{::link})"></head>
+
+<body>
+	test!
+
+	<div class="container">
+		<!--    <div th:if="${validationError}" th:each="error : ${validationError}">-->
+		<!--      <label class="text-danger" th:text="${error}"></label>-->
+	</div>
+	<h1>ユーザー新規登録</h1>
+
+	<div class="box_con">
+		<form method="post">
+			<table class="formTable">
+				<tr>
+					<th>ユーザーネーム</th>
+					<!--        <input type="text" th:field="*{name}" class="form-control">-->
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<th>メールアドレス</th>
+					<!--        <input type="text" th:field="*{name}" class="form-control">-->
+
+					<td><input type="email"></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+
+					<!--        <input type="text" th:field="*{phone}" class="form-control">-->
+					<td><input type="password"></td>
+				</tr>
+				<tr>
+					<th>パスワード(確認用)</th>
+					<td><input type="password"></td>
+				</tr>
+			</table>
+			
+			<div class="btn">
+				<input class="add_cancel_btn" type="submit" value="キャンセル" />
+				<input class="add_regi_btn" type="submit" value="　 登録 　" />
+			</div>
+			
+			<!--    <form th:action="@{/user/create}" th:object="${userRequest}" th:method="post">-->
+		</form>
+	</div>
+</body>
+
+</html>

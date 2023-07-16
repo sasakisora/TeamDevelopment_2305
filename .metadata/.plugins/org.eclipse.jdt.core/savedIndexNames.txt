@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+/Users/kamizuru/TeamDevelopment_2305/.metadata/.plugins/org.eclipse.jdt.core
+643333764.index
+1924484980.index
+1352130396.index
+1865797976.index
+3966035848.index
